@@ -1,1 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Databases</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">      
+</head>
+<body>
+    <header>
+        <h1>Databases</h1>
+    </header>
+    <nav>
+        <a href="#overview">What are databases</a>
+        <a href="#keys">Keys</a>
+        <a href="#referential">Referential Integrity</a>
+        <a href="#normalisation">Normalisation</a>
+    </nav>
+    <section id="overview">
+        <h2>What are databases?</h2>
+        <p>A database is a structured system that stores and retrieves data. It organizes information in tables, making it easy to search, update, and manage. Databases are important for applications that require consistent and reliable data handling, such as websites and business systems.</p>
+        <img src="images/drawers.png">
+    </section>
+    <section id="keys">
+        <h2>Keys</h2>
+        <p>In a database, there are multiple types of keys that serve different purposes: </p>
+        <h3>Primary Key</h3>
+        <p>A primary key is a unique identifier for each record in a table, and it cannot be null. Every record requires a primary key, as it is what is used to refer to each record</p>
+        <table>
+            <p><em>TblStudent</em></p>
+            <tr>
+                <th>🔑 StudentID</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>Bob</td>
+            </tr><tr>
+                <td>101</td>
+                <td>Joe</td>
+            </tr><tr>
+                <td>102</td>
+                <td>Bob</td>
+            </tr><tr>
+                <td>103</td>
+                <td>Sam</td>
+            </tr><tr>
+                <td>104</td>
+                <td>Mia</td>
+            </tr>
+        </table>
+        <p>In the above table, <em>Student ID</em> is the primary key (denoted by 🔑), as it a unqique identifier for a student</p>
 
+        <h3>Secondary Key</h3>
+        <p>A secondary key is an alternative identifier for records in a table. They remain unique like primary keys, and are often used for easier searching of the database using <a href="https://en.wikipedia.org/wiki/SQL">SQL (Structured Query Language)</a> or other query languages.</p>
+        <table>
+        <p><em>TblStudent</em></p>
+            <tr>
+                <th>🔑 StudentID</th>
+                <th>Email</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>bobisthebest@gmail.com</td>
+                <td>Bob</td>
+            </tr><tr>
+                <td>101</td>
+                <td>joe.smith@icloud.com</td>
+                <td>Joe</td>
+            </tr><tr>
+                <td>102</td>
+                <td>kittenlover76@gmail.com</td>
+                <td>Bob</td>
+            </tr><tr>
+                <td>103</td>
+                <td>samraine2007@gmail.com</td>
+                <td>Sam</td>
+            </tr><tr>
+                <td>104</td>
+                <td>lumityisbest@gmail.com</td>
+                <td>Mia</td>
+            </tr>
+        </table>
+        <p>This is the same table as before but now with a new <em>Email</em> field. This would be an example of a secondary key - it is unique to each student but is more searchable than a student ID number for instance.</p>
+        <h3>Foreign Keys and Composite Keys</h3>
+        <p>Foreign keys are fields in a table that are a primary key in another table, linking the tables. This allows data to stay consistent across tables. These foreign keys can make up part of a primary key, called a composite key.</p>
+        <table>
+            <p><em>TblStudent</em></p>
+            <tr>
+                <th>🔑 StudentID</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>Bob</td>
+            </tr><tr>
+                <td>101</td>
+                <td>Joe</td>
+            </tr><tr>
+                <td>102</td>
+                <td>Bob</td>
+            </tr><tr>
+                <td>103</td>
+                <td>Sam</td>
+            </tr><tr>
+                <td>104</td>
+                <td>Mia</td>
+            </tr>
+        </table>
+
+        <table>
+            <p><em>TblCourses</em></p>
+            <tr>
+                <th>🔑 CourseID</th>
+                <th>🔑 <em>StudentID<em></em></th>
+                <th>DateEnrolled</th>
+            </tr>
+            <tr>
+                <td>MAT01</td>
+                <td>100</td>
+                <td>10/10/2023</td>
+            </tr><tr>
+                <td>MAT01</td>
+                <td>102</td>
+                <td>03/09/2024</td>
+            </tr><tr>
+                <td>COMP01</td>
+                <td>100</td>
+                <td>03/09/2023</td>
+            </tr><tr>
+                <td>ENG02</td>
+                <td>103</td>
+                <td>03/09/2023</td>
+            </tr><tr>
+                <td>PHY01</td>
+                <td>102</td>
+                <td>11/02/2024</td>
+            </tr>
+            <tr>
+                <td>COMP01</td>
+                <td>103</td>
+                <td>03/09/2024</td>
+            </tr><tr>
+                <td>MAT01</td>
+                <td>103</td>
+                <td>03/09/2023</td>
+        </table>
+        <p>There is now a new table containing courses that students are enrolled in. In this table <em>StudentID</em> is a foreign key, making up part of a composite key with <em>CourseID</em>.</p>
+    </section>
+    <section id="referential">
+        <h2>Referential Integrity</h2>
+        <p>Referential integrity ensures that relationships between table remain consistent be making sure that a foreign key always refers to an existing primary key in another table.</p>
+
+        <iframe src="https://www.youtube.com/embed/5hFPoBWCdQA" title="SQL Server 12 - Referential Integrity" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        
+    </section>
+    <section id="normalisation">
+        <h2>Normalisation</h2>
+        <p>Normalisation in databases eliminates redundancy to prevent errors in data. It also can reduce the storage space of a database. It also allows for easier seaches and queries, due to fields being more seperate.</p>
+        <p>To normalise a database you can remember these three steps:
+            <ol>
+                <li>The key</li>
+                <li>The whole key</li>
+                <li>Nothing but the Key</li>
+            </ol>
+        </p>
+
+        <h3>1st Normal Form (1nf)</h3>
+        <p>In 1nf, the following needs to be true:
+            <ul>
+                <li>Data is atomised - data is in the smallest parts (eg first name and last name)</li>
+                <li>Each record has a primary key</li>
+                <li>No duplicate records</li>
+                <li>Attributes shouldn't repeat</li>
+            </ul>
+            To normalise a table to 1nf, move repeating data into another table, select a primary key, and copy that primary key back into the table as a foreign key.</p>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Country</th>
+                </tr>
+                <tr>
+                    <td>John Smith</td>
+                    <td>07982658264</td>
+                    <td>United Kindom</td>
+                </tr>
+                <tr>
+                    <td>Riley Brown</td>
+                    <td>07473957294</td>
+                    <td>UK</td>
+                </tr>
+                <tr>
+                    <td>Alex Jones</td>
+                    <td>07209200985</td>
+                    <td>England</td>
+                </tr>
+                <tr>
+                    <td>Isobel Johnson</td>
+                    <td>07218352232</td>
+                    <td>France</td>
+                </tr>
+                <tr>
+                    <td>Emily Miller</td>
+                    <td>07554323867</td>
+                    <td>UK</td>
+                </tr>
+            </table>
+<p>This table is not normalised, and there is no public key.</p>
+        
+    </section>
+</body>
+</html>
