@@ -18,6 +18,7 @@
         <a href="#keys">Keys</a>
         <a href="#referential">Referential Integrity</a>
         <a href="#normalisation">Normalisation</a>
+        <a href="#acid">ACID and Transaction Processing</a>
     </nav>
     <section id="overview">
         <h2>What are databases?</h2>
@@ -333,10 +334,10 @@
     <p><em>TblPatients</em></p>
     <tr>
         <th>PatientID</th>
-        <th>PatientFirstName</th>
-        <th>PatientLastName</th>
-        <th>PatientDoctor</th>
-        <th>PatientDoctorPhone</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Doctor</th>
+        <th>DoctorPhone</th>
     </tr>
     <tr>
         <td>1</td>
@@ -360,7 +361,7 @@
         <td>07827563412</td>
     </tr>
    </table>
-   <p>In the table above, <em>PatientDoctorPhone</em> is only dependent on the doctors name, and so is moved to its own table of doctors:</p>
+   <p>In the table above, <em>DoctorPhone</em> is only dependent on the doctors name, and so is moved to its own table of doctors:</p>
    <table>
     <p><em>TblDoctors</em></p>
     <tr>
@@ -379,7 +380,22 @@
         <td>07946777243</td>
     </tr>
    </table>
-
+    </section>
+    <section>
+        <h2>ACID and Transaction Processing</h2>
+        <h3>What are transactions?</h3>
+        <p>Transactions are a sequence of operations on a database that are treated as a single unit of work. This ensures consistency and and integrity when multiple people are accessing the database at once.</p>
+        <h3>ACID</h3>
+        <p>ACID stands for:
+            <ul>
+                <li><strong>A</strong>tomicity</li>
+                <li><strong>C</strong>onsistency</li>
+                <li><strong>I</strong>ntegrity</li>
+                <li><strong>D</strong>urability</li>
+            </ul>
+        </p>
+        <h4>Atomicity</h4>
+        <p></p>
     </section>
 </body>
 </html>
