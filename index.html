@@ -180,6 +180,7 @@
             To normalise a table to 1nf, move repeating data into another table, select a primary key, and copy that primary key back into the table as a foreign key.</p>
 
             <table>
+                <p><em>TblCustomers</em></p>
                 <tr>
                     <th>Name</th>
                     <th>Phone</th>
@@ -212,7 +213,173 @@
                 </tr>
             </table>
 <p>This table is not normalised, and there is no public key.</p>
+
+<table>
+    <p><em>TblCustomers</em></p>
+    <tr>
+        <th>🔑 CustomerID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Phone</th>
+        <th>Country</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>John</td> 
+        <td>Smith</td>
+        <td>07982658264</td>
+        <td>United Kindom</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Riley</td> 
+        <td>Brown</td>
+        <td>07473957294</td>
+        <td>UK</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Alex</td> 
+        <td>Jones</td>
+        <td>07209200985</td>
+        <td>England</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Isobel</td> 
+        <td>Johnson</td>
+        <td>07218352232</td>
+        <td>France</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Emily</td>
+        <td>Miller</td>
+        <td>07554323867</td>
+        <td>UK</td>
+    </tr>
+</table>
+<p>Each record was assigned a cusotmer ID, which is unique, which serves as the primary key. The name is now stored as seperate first and last names, meaning the data is <strong>atomic</strong>. This table is now in 1st normal form.</p>
+<h3>2nd Normal Form (2nf)</h3>
+<p>In second normal form, tables must:
+    <ul>
+        <li><strong>Already be in 1nf</strong></li>
+        <li>No partial dependencies - all data must be functionally dependent on the whole primary key</li>
+    </ul>
+</p>
+   <table>
+    <p><em>TblStudentCourses</em></p>
+    <tr>
+        <th>🔑 <em>StudentID</em></th>
+        <th>🔑 CourseID</th>
+        <th>CourseTitle</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>01</td>
+        <td>Mathematics</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>01</td>
+        <td>Mathematics</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>02</td>
+        <td>Computer Science</td>
+    </tr>
+    <tr>
+        <td>103</td>
+        <td>01</td>
+        <td>Mathematics</td>
+    </tr>
+    <tr>
+        <td>103</td>
+        <td>03</td>
+        <td>Sociology</td>
+    </tr>
+   </table>    
+   <p>In this example, <em>CourseTitle</em> is only dependent on <em>CourseID</em>, and not on <em>StudentID</em>. To normalise to 2nf, the courses are moved into their own table:</p> 
+   <table>
+    <p><em>TblCourses</em></p>
+    <tr>
+        <th>🔑 CourseID</th>
+        <th>CourseTitle</th>
+    </tr>
+    <tr>
+        <td>01</td>
+        <td>Mathematics</td>
+    </tr>
+    <tr>
+        <td>02</td>
+        <td>Computer Science</td>
         
+    </tr>
+    <tr>
+        <td>03</td>
+        <td>Sociology</td>
+    </tr>
+   </table>
+   <p>This is now in 2nf, as each field is dependent on the whole key.</p>
+   <h3>3rd Normal Form (3nf)</h3>
+   <p>In 3rd normal form all tables must:
+    <ul>
+        <li><strong>Already be in 2nd normal form</strong></li>
+        <li>Not have any transitive dependencies - no non primary attributes can be dependent on other non primary attributes</li>
+    </ul>
+   </p>
+   <table>
+    <p><em>TblPatients</em></p>
+    <tr>
+        <th>PatientID</th>
+        <th>PatientFirstName</th>
+        <th>PatientLastName</th>
+        <th>PatientDoctor</th>
+        <th>PatientDoctorPhone</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Bob</td>
+        <td>Smith</td>
+        <td>Dr Robotnik</td>
+        <td>07827563412</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Riley</td>
+        <td>Brown</td>
+        <td>Dr Doktor</td>
+        <td>07946777243</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Sally</td>
+        <td>Johnson</td>
+        <td>Dr Robotnik</td>
+        <td>07827563412</td>
+    </tr>
+   </table>
+   <p>In the table above, <em>PatientDoctorPhone</em> is only dependent on the doctors name, and so is moved to its own table of doctors:</p>
+   <table>
+    <p><em>TblDoctors</em></p>
+    <tr>
+        <th>DoctorID</th>
+        <th>DoctorName</th>
+        <th>DoctorPhone</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Dr Robotnik</td>
+        <td>07827563412</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Dr Doktor</td>
+        <td>07946777243</td>
+    </tr>
+   </table>
+
     </section>
 </body>
 </html>
