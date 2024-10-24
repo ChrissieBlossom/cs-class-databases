@@ -18,7 +18,8 @@
         <a href="#keys">Keys</a>
         <a href="#referential">Referential Integrity</a>
         <a href="#normalisation">Normalisation</a>
-        <a href="#acid">ACID and Transaction Processing</a>
+        <a href="#acid">ACID</a>
+        <a href="#transactions">Transaction Processing</a>
     </nav>
     <section id="overview">
         <h2>What are databases?</h2>
@@ -381,7 +382,7 @@
     </tr>
    </table>
     </section>
-    <section>
+    <section id="acid">
         <h2>ACID and Transaction Processing</h2>
         <h3>What are transactions?</h3>
         <p>Transactions are a sequence of operations on a database that are treated as a single unit of work. This ensures consistency and and integrity when multiple people are accessing the database at once.</p>
@@ -395,7 +396,16 @@
             </ul>
         </p>
         <h4>Atomicity</h4>
-        <p></p>
+        <p>Atomicity ensures that all operations on a database euther succeed or fail as a whole. If any operation fails, the transaction is rolled back, meaning the database is reverted to the state it was before the failed transaction. This prevents partial transactions. Many things could cause a transaction to fail, for instance the software crashing, or it tries to access data that doesn't exist.</p>
+        <h4>Consistency</h4>
+        <p>The database <em>must</em> remain consistent, and all data in the tables must be correct. The data must obey the rules of the database, such as maintaining <a href="#referential">referential integrity</a>. As well as this, the queries must remain consistent as well.</p>
+        <h4>Isolation</h4>
+        <p>Transactions are isolated from each other, which means that intermediate states of the database are not visible to other transactions. This helps prevent conflicts and data inconsistencies caused by mutliple people accessing the database at the same time.</p>
+        <h4>Durability</h4>
+        <p>Committed transactions persist even in case if system failures, ensuring data is not lost once a transaction is complete.</p>
+    </section>
+    <section id="transactions">
+
     </section>
 </body>
 </html>
